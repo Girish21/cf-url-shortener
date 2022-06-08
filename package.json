@@ -1,0 +1,24 @@
+{
+  "name": "remix-cloudflare-template",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "config/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npx --yes turbo run build",
+    "dev": "npx --yes turbo run dev --parallel",
+    "lint": "npx --yes turbo run lint",
+    "typecheck": "npx --yes turbo run typecheck",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md}\""
+  },
+  "devDependencies": {
+    "prettier": "latest",
+    "turbo": "latest"
+  },
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=16.0.0"
+  }
+}
