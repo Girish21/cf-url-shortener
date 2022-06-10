@@ -1,7 +1,6 @@
 interface Env {
   __STATIC_CONTENT: KVNamespace
-
-  COUNTER: DurableObjectNamespace
+  URL_MAPPING: KVNamespace
 
   SESSION_SECRET: string
 }

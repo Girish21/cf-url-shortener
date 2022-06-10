@@ -1,25 +1,18 @@
 compatibility_date = "2022-05-22"
 main = "src/index.ts"
-name = "remix-cloudflare-template"
+name = "url-shortener"
+account_id = "8b97ccfb2affaf6aa5bb0094455d9ce3"
 
 workers_dev = true
+
+kv_namespaces = [
+  { binding = "URL_MAPPING", id = "d55ce7bdd21b4750b4d602ac27dde4e8" }
+]
 
 [site]
 bucket = "../remix-app/public"
 
 [env.dev]
-vars = {SESSION_SECRET = "should-be-secure-in-prod"}
-
-[env.dev.durable_objects]
-bindings = [
-  {name = "COUNTER", class_name = "CounterDurableObject"},
+kv_namespaces = [
+  { binding = "URL_MAPPING", id = "2f10af20c5ce4e9eb0fb306eeb7c9b94", preview_id = "2f10af20c5ce4e9eb0fb306eeb7c9b94" }
 ]
-
-[durable_objects]
-bindings = [
-  {name = "COUNTER", class_name = "CounterDurableObject"},
-]
-
-[[migrations]]
-tag = "v1"
-new_classes = ["CounterDurableObject"]
