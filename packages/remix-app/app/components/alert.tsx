@@ -42,13 +42,13 @@ function ClipboardButton({ url }: { url: string }) {
 
   return (
     <button
-      className='flex-shrink-0 rounded p-2 overflow-hidden isolate z-10 relative after:transition after:duration-150 after:ease-out after:content-[""] after:inset-0 hover:after:bg-gray-100 hover:after:bg-opacity-50 after:blur-lg after:absolute after:saturate-150'
+      className='relative isolate z-10 flex-shrink-0 overflow-hidden rounded p-2 after:absolute after:inset-0 after:blur-lg after:saturate-150 after:transition after:duration-150 after:ease-out after:content-[""] hover:after:bg-gray-100 hover:after:bg-opacity-50'
       title='Copy to Clipboard'
       onClick={() => {
         send('CLICK')
       }}
     >
-      <svg className='w-6 h-6'>
+      <svg className='h-6 w-6'>
         {state.matches('idle') ? (
           <use href={`${svg}#clipboardIcon`} />
         ) : (
@@ -72,7 +72,7 @@ function ShortUrl({ url }: { url: string }) {
           href={url}
           target='_blank'
           rel='noreferrer'
-          className='font-bold underline hover:no-underline text-indigo-700'
+          className='font-bold text-indigo-700 underline hover:no-underline'
         >
           {url}
         </a>
@@ -92,7 +92,7 @@ function Alert() {
   return (
     <div
       className={clsx(
-        'mt-[10vh] mx-auto p-6 text-lg sm:text-xl shadow-[4px_4px] border-2 border-gray-900 dark:border-none shadow-gray-900 rounded dark:ring-2 dark:ring-offset-2 dark:ring-offset-transparent',
+        'mx-auto mt-[10vh] rounded border-2 border-gray-900 p-6 text-lg shadow-[4px_4px] shadow-gray-900 dark:border-none dark:ring-2 dark:ring-offset-2 dark:ring-offset-transparent sm:text-xl',
         'error' in actionData &&
           'bg-pink-600 dark:bg-red-400 dark:ring-red-700',
         'shortUrl' in actionData &&
