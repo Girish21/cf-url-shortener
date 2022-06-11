@@ -1,6 +1,6 @@
 {
-  "name": "remix-cloudflare-template",
-  "version": "0.1.0",
+  "name": "url-generator",
+  "version": "0.2.0",
   "private": true,
   "workspaces": [
     "config/*",
