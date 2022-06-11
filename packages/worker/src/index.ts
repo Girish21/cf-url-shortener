@@ -12,8 +12,8 @@ export default {
     env: Env,
     ctx: ExecutionContext,
   ): Promise<Response> {
+    let url = new URL(request.url)
     try {
-      let url = new URL(request.url)
       let ttl = url.pathname.startsWith('/build/')
         ? 60 * 60 * 24 * 365 // 1 year
         : 60 * 5 // 5 minutes
@@ -37,7 +37,13 @@ export default {
 
     try {
       let loadContext: LoadContext = { env }
-      return await handleRemixRequest(request, loadContext)
+      let response = await handleRemixRequest(request, loadContext)
+      if (url.pathname === '/generate') {
+        response.headers.set('Access-Control-Allow-Origin', '*')
+        response.headers.set('Access-Control-Allow-Methods', 'POST')
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type')
+      }
+      return response
     } catch (error) {
       console.log(error)
       return new Response('An unexpected error occurred', { status: 500 })
