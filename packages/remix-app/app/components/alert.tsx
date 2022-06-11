@@ -60,7 +60,11 @@ function ClipboardButton({ url }: { url: string }) {
 }
 
 function Error() {
-  return <p>Could not generate a short URL :(</p>
+  return (
+    <p className='font-bold dark:font-normal'>
+      Could not generate a short URL :(
+    </p>
+  )
 }
 
 function ShortUrl({ url }: { url: string }) {
