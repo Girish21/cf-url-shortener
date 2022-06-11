@@ -37,7 +37,16 @@ curl -XPOST <https://url.vgirish.net/generate> -H "Content-Type: application/jso
       <td>fetch</td>
       <td>
         <pre>
-fetch('https://url.vgirish.net/generate', {method: 'post', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({url: "https://www.google.com/"})})
+fetch(
+  'https://url.vgirish.net/generate',
+  {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({url: "https://www.google.com/"})
+  }
+)
         </pre>
       </td>
     </tr>
