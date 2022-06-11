@@ -1,4 +1,5 @@
-import type { ActionFunction } from '@remix-run/cloudflare'
+import type { ActionFunction, LoaderFunction } from '@remix-run/cloudflare'
+import { json } from '@remix-run/cloudflare'
 import generateUrl from '~/generateUrl'
 
 export let action: ActionFunction = ({ context, request }) => {
@@ -15,4 +16,17 @@ export let action: ActionFunction = ({ context, request }) => {
     },
     request,
   })
+}
+
+export let loader: LoaderFunction = ({ request }) => {
+  if (request.method === 'OPTIONS') {
+    return json(null, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
+    })
+  }
+  return null
 }
