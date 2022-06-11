@@ -3,7 +3,7 @@ import { useMachine } from '@xstate/react'
 import * as React from 'react'
 import { createMachine } from 'xstate'
 import svg from '~/assets/svgs.svg'
-import type { ActionData } from '~/root'
+import type { ActionData } from '~/generateUrl'
 import { clsx } from '~/utils'
 
 let copyMachine = createMachine(

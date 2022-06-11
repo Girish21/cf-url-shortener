@@ -3,7 +3,6 @@ import type {
   LinksFunction,
   MetaFunction,
 } from '@remix-run/cloudflare'
-import { json } from '@remix-run/cloudflare'
 import {
   Links,
   LiveReload,
@@ -17,10 +16,14 @@ import Alert from './components/alert'
 import Container from './components/container'
 import Form from './components/form'
 import Text from './components/text'
+import generateUrl from './generateUrl'
 
 export let meta: MetaFunction = () => ({
   charset: 'utf-8',
-  title: 'New Remix App',
+  title: 'Tiny URL Generator',
+  description: 'Generate a tiny URL. Buit with Remix and Cloudflare Workers.',
+  keywords:
+    'url shortner, url generator, remix, remix run, remix_run, cloudflare, cloudflare workers, kv, edge, tiny url, tiny url generator',
   viewport: 'width=device-width,initial-scale=1',
   'color-scheme': 'dark light',
 })
@@ -50,31 +53,16 @@ export let links: LinksFunction = () => [
 ]
 
 export let action: ActionFunction = async ({ context, request }) => {
-  let formData = await request.formData()
-  let url = formData.get('url')
-  let origin = new URL(request.url).origin
+  return generateUrl({
+    context,
+    getUrl: async request => {
+      let formData = await request.formData()
+      let url = formData.get('url')
 
-  if (!url || typeof url !== 'string') {
-    return json<ActionData>(
-      { error: 'Invalid URL', status: 400 },
-      { status: 400 },
-    )
-  }
-
-  try {
-    new URL(url)
-  } catch {
-    return json<ActionData>(
-      { error: 'Invalid URL', status: 400 },
-      { status: 400 },
-    )
-  }
-
-  let slug = await (await fetch('https://uuid.rocks/nanoid')).text()
-
-  await context.env.URL_MAPPING.put(slug, url)
-
-  return json<ActionData>({ shortUrl: `${origin}/${slug}` })
+      return url
+    },
+    request,
+  })
 }
 
 export default function App() {
@@ -97,7 +85,3 @@ export default function App() {
     </html>
   )
 }
-
-export type ActionData =
-  | { error: string | null; status: number }
-  | { shortUrl: string }
