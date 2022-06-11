@@ -8,3 +8,6 @@ A simple Short URL generator using Cloudflare Workers + KV + Remix
 - Cloudflare Workers
 - Cloudflare KV
 - Tailwind CSS
+- Turbo Repo
+- ESLint
+- Prettier
