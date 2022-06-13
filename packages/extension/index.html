@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Generate a tiny URL. Buit with Remix and Cloudflare Workers."
+    />
+    <meta
+      name="keywords"
+      content="url shortner, url generator, remix, remix run, remix_run, cloudflare, cloudflare workers, kv, edge, tiny url, tiny url generator"
+    />
+    <title>Tiny URL Generator</title>
+  </head>
+  <body class="bg-yellow-100">
+    <main class="p-6">
+      <h1 class="text-center text-2xl font-bold">Generate Short URL</h1>
+      <form method="post" id="url-form">
+        <fieldset id="url-fieldset" class="mt-4 flex w-[min(45ch,90vw)] gap-4">
+          <input
+            required
+            name="url"
+            placeholder="URL..."
+            class="flex-1 border-2 border-gray-900 p-2 text-lg shadow-[4px_4px] shadow-gray-900 focus:outline-none"
+          />
+          <button
+            class="rounded border-2 border-gray-900 bg-purple-700 p-2 text-lg text-white shadow-[4px_4px] shadow-gray-900 transition duration-100 ease-out focus:outline-none focus-visible:shadow-[3px_3px]"
+          >
+            Get URL
+          </button>
+        </fieldset>
+      </form>
+      <div id="result"></div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
