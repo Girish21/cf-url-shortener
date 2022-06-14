@@ -1,3 +1,4 @@
+import svg from 'internal-assets/copy.svg?url'
 import './style.css'
 
 let form = document.getElementById('url-form') as HTMLFormElement | null
@@ -52,7 +53,9 @@ function formSubmitHandler() {
               data-copy-url="${data.shortUrl}"
               class="rounded text-white text-lg hover:bg-white hover:bg-opacity-25 ease-out p-1 transition duration-150 hover:backdrop-blur-sm"
             >
-              Copy
+              <svg class="h-6 w-6">
+                <use id="copy-icon" href="${svg}#clipboardIcon"></use>
+              </svg>
             </button>
           </div>
         </div>`
@@ -71,15 +74,47 @@ function formSubmitHandler() {
   })
 }
 
-formSubmitHandler()
+function preloadCopySvg() {
+  let preload = document.createElement('link')
+  preload.href = svg
+  preload.rel = 'preload'
+  preload.as = 'image'
+  preload.type = 'image/svg+xml'
+  document.head.append(preload)
+}
 
-window.addEventListener('click', e => {
-  if (
-    e.target &&
-    e.target instanceof HTMLButtonElement &&
-    e.target.id === 'copy-button' &&
-    typeof e.target.dataset.copyUrl === 'string'
-  ) {
-    window.navigator.clipboard.writeText(e.target.dataset.copyUrl)
+function focusInput() {
+  let input = document.getElementById('url')
+  input?.focus()
+}
+
+function globalButtonClickHandler() {
+  function getButton(el: HTMLElement) {
+    return el.closest('button') as HTMLButtonElement | null
   }
-})
+
+  window.addEventListener('click', e => {
+    let buttonRef = getButton(e.target as HTMLElement)
+    if (
+      buttonRef &&
+      buttonRef.id === 'copy-button' &&
+      typeof buttonRef.dataset.copyUrl === 'string'
+    ) {
+      let useRef = buttonRef.querySelector('#copy-icon') as SVGUseElement | null
+      if (useRef) {
+        useRef.setAttribute('href', `${svg}#clipboardSelectedIcon`)
+        setTimeout(() => {
+          if (useRef) {
+            useRef.setAttribute('href', `${svg}#clipboardIcon`)
+          }
+        }, 2000)
+      }
+      window.navigator.clipboard.writeText(buttonRef.dataset.copyUrl)
+    }
+  })
+}
+
+preloadCopySvg()
+focusInput()
+formSubmitHandler()
+globalButtonClickHandler()
