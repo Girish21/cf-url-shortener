@@ -20,7 +20,6 @@
     "@xstate/react": "^3.0.0",
     "internal-assets": "*",
     "machines": "*",
-    "nanoid": "^4.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "tiny-invariant": "^1.2.0",
@@ -29,7 +28,6 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^3.10.0",
     "@remix-run/dev": "^1.5.1",
-    "@types/nanoid": "^3.0.0",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
     "cloudflare-env": "*",
