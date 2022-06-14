@@ -1,40 +1,10 @@
 import { useActionData } from '@remix-run/react'
 import { useMachine } from '@xstate/react'
 import svg from 'internal-assets/copy.svg'
+import { copyMachine } from 'machines'
 import * as React from 'react'
-import { createMachine } from 'xstate'
 import type { ActionData } from '~/generateUrl'
 import { clsx } from '~/utils'
-
-let copyMachine = createMachine(
-  {
-    id: 'copy button',
-    initial: 'idle',
-    schema: { context: {} as TContext, events: {} as TEvents },
-    states: {
-      idle: {
-        on: {
-          CLICK: 'copying',
-        },
-      },
-      copying: {
-        entry: 'copy',
-        after: {
-          2000: {
-            target: 'idle',
-          },
-        },
-      },
-    },
-  },
-  {
-    actions: {
-      copy: async ctx => {
-        await window.navigator.clipboard.writeText(ctx.url)
-      },
-    },
-  },
-)
 
 function ClipboardButton({ url }: { url: string }) {
   let machine = React.useMemo(() => copyMachine.withContext({ url }), [url])
@@ -110,11 +80,3 @@ function Alert() {
 }
 
 export default Alert
-
-type TContext = {
-  url: string
-}
-
-type TEvents = {
-  type: 'CLICK'
-}

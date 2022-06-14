@@ -19,11 +19,11 @@
     "@remix-run/react": "^1.5.1",
     "@xstate/react": "^3.0.0",
     "internal-assets": "*",
+    "machines": "*",
     "nanoid": "^4.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "tiny-invariant": "^1.2.0",
-    "xstate": "^4.32.1"
+    "tiny-invariant": "^1.2.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^3.10.0",
