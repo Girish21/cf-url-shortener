@@ -1,8 +1,8 @@
 import { useActionData } from '@remix-run/react'
 import { useMachine } from '@xstate/react'
+import svg from 'internal-assets/copy.svg'
 import * as React from 'react'
 import { createMachine } from 'xstate'
-import svg from '~/assets/svgs.svg'
 import type { ActionData } from '~/generateUrl'
 import { clsx } from '~/utils'
 

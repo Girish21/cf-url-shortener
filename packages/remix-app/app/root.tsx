@@ -10,7 +10,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
-import svg from '~/assets/svgs.svg'
+import svg from 'internal-assets/copy.svg'
 import styles from '~/styles/app.css'
 import Alert from './components/alert'
 import Container from './components/container'
