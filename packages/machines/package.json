@@ -1,17 +1,11 @@
 {
   "name": "machines",
   "version": "0.0.0",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
   "scripts": {
-    "build": "node ./scripts/build.mjs",
-    "dev": "node ./scripts/watch.mjs",
     "lint": "eslint .",
     "typecheck": "tsc -b"
   },
   "devDependencies": {
-    "chokidar": "^3.5.3",
-    "esbuild": "^0.14.43",
     "eslint": "^8.15.0",
     "eslint-config-custom": "*",
     "tsconfig": "*",
