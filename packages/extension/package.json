@@ -10,7 +10,9 @@
     "typecheck": "tsc -b"
   },
   "dependencies": {
-    "internal-assets": "*"
+    "internal-assets": "*",
+    "machines": "*",
+    "xstate": "^4.32.1"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^1.0.11",

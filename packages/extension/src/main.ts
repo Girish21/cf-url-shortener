@@ -1,4 +1,6 @@
 import svg from 'internal-assets/copy.svg?url'
+import { interpret } from 'xstate'
+import { copyMachine } from 'machines'
 import './style.css'
 
 let form = document.getElementById('url-form') as HTMLFormElement | null
@@ -101,15 +103,21 @@ function globalButtonClickHandler() {
       typeof buttonRef.dataset.copyUrl === 'string'
     ) {
       let useRef = buttonRef.querySelector('#copy-icon') as SVGUseElement | null
-      if (useRef) {
-        useRef.setAttribute('href', `${svg}#clipboardSelectedIcon`)
-        setTimeout(() => {
-          if (useRef) {
-            useRef.setAttribute('href', `${svg}#clipboardIcon`)
-          }
-        }, 2000)
-      }
-      window.navigator.clipboard.writeText(buttonRef.dataset.copyUrl)
+      let service = interpret(
+        copyMachine.withContext({ url: buttonRef.dataset.copyUrl }),
+      ).onTransition(state => {
+        if (!useRef) {
+          return
+        }
+        if (state.matches('copying')) {
+          useRef.setAttribute('href', `${svg}#clipboardSelectedIcon`)
+        } else if (state.matches('idle')) {
+          useRef.setAttribute('href', `${svg}#clipboardIcon`)
+        }
+      })
+
+      service.start()
+      service.send('CLICK')
     }
   })
 }
