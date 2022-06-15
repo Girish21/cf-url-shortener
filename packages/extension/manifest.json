@@ -2,5 +2,11 @@
   "manifest_version": 3,
   "name": "Tiny URL Generator",
   "version": "0.0.1",
-  "action": { "default_popup": "index.html" }
+  "action": { "default_popup": "index.html" },
+  "icons": {
+    "16": "url-share-favicon-16.png",
+    "32": "url-share-favicon-32.png",
+    "48": "url-share-favicon-48.png",
+    "128": "url-share-favicon-128.png"
+  }
 }

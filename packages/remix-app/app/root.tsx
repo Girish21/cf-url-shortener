@@ -29,6 +29,7 @@ export let meta: MetaFunction = () => ({
 })
 
 export let links: LinksFunction = () => [
+  { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
   { rel: 'stylesheet', href: styles },
   {
     rel: 'preload',
