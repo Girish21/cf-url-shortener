@@ -1,6 +1,6 @@
-<svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g filter="url(#a)">
-    <path fill="#F2EC5A" shape-rendering="crispEdges" d="M1 1h24v24H1z" />
+    <path fill="#FAEF2E" shape-rendering="crispEdges" d="M1 1h24v24H1z" />
     <path
       d="M11.2212 14.7788a3.9999 3.9999 0 0 0 5.656 0l4-4a3.9995 3.9995 0 0 0 1.1226-2.8136 3.9997 3.9997 0 0 0-3.965-3.965 4 4 0 0 0-2.8136 1.1226l-1.1 1.1m.756 4.9a4.0006 4.0006 0 0 0-5.656 0l-4 4a4.0003 4.0003 0 0 0-.0496 5.7056 3.9991 3.9991 0 0 0 2.8632 1.1714 4.0003 4.0003 0 0 0 2.8424-1.221l1.102-1.101 2.898-8.555Z"
       stroke="#000" stroke-opacity=".85" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
