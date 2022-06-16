@@ -14,7 +14,7 @@
     />
     <title>Tiny URL Generator</title>
   </head>
-  <body class="bg-yellow-100">
+  <body class="border-4 border-gray-900 bg-yellow-100">
     <main class="p-6">
       <h1 class="text-center text-2xl font-bold">Generate Short URL</h1>
       <form method="post" id="url-form">
@@ -24,16 +24,39 @@
             id="url"
             name="url"
             placeholder="URL..."
-            class="flex-1 border-2 border-gray-900 p-2 text-lg shadow-[4px_4px] shadow-gray-900 focus:outline-none"
+            class="flex-1 border-2 border-gray-900 p-2 text-lg shadow-[4px_4px] shadow-gray-900 transition duration-100 ease-out focus:outline-none focus-visible:shadow-[6px_6px] focus-visible:shadow-gray-900"
           />
           <button
-            class="rounded border-2 border-gray-900 bg-purple-700 p-2 text-lg text-white shadow-[4px_4px] shadow-gray-900 transition duration-100 ease-out focus:outline-none focus-visible:shadow-[3px_3px]"
+            class="rounded border-2 border-gray-900 bg-purple-700 p-2 text-lg text-white shadow-[4px_4px] shadow-gray-900 transition duration-100 ease-out focus:outline-none focus-visible:shadow-[6px_6px] focus-visible:shadow-gray-900"
           >
             Get URL
           </button>
         </fieldset>
       </form>
       <div id="result"></div>
+      <footer class="mt-6 flex w-[min(45ch,90vw)] items-center justify-between">
+        <a
+          rel="noreferrer"
+          target="_blank"
+          href="https://url.vgirish.net/"
+          class="flex items-center gap-2 border-2 border-gray-900 bg-red-600 p-2 text-white shadow-[4px_4px] shadow-gray-900 transition duration-100 ease-out focus:outline-none focus-visible:shadow-[6px_6px] focus-visible:shadow-gray-900"
+        >
+          <span class="text-base">Visit Site</span>
+          <svg aria-hidden="" class="h-6 w-6">
+            <use id="external-icon"></use>
+          </svg>
+        </a>
+        <a
+          rel="noreferrer"
+          target="_blank"
+          href="https://github.com/Girish21/cf-url-shortener"
+          class="border-2 border-gray-900 bg-red-600 p-2 text-white shadow-[4px_4px] shadow-gray-900 transition duration-100 ease-out focus:outline-none focus-visible:shadow-[6px_6px] focus-visible:shadow-gray-900"
+        >
+          <svg aria-hidden="" class="h-6 w-6">
+            <use id="github-icon"></use>
+          </svg>
+        </a>
+      </footer>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>

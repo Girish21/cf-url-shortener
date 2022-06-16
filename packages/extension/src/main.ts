@@ -1,6 +1,8 @@
-import svg from 'internal-assets/copy.svg?url'
-import { interpret } from 'xstate'
+import copySvg from 'internal-assets/copy.svg?url'
+import externalLinkSvg from 'internal-assets/external-link.svg?url'
+import githubSvg from 'internal-assets/github.svg?url'
 import { copyMachine } from 'machines'
+import { interpret } from 'xstate'
 import './style.css'
 
 let form = document.getElementById('url-form') as HTMLFormElement | null
@@ -44,7 +46,7 @@ function formSubmitHandler() {
         result.innerHTML = `<div class="mt-4 p-2 border-2 border-gray-900 shadow-[4px_4px] shadow-gray-900 bg-green-500">
           <div class="flex items-center gap-3">
             <a
-              class="break-all text-base font-bold text-blue-700 underline hover:no-underline"
+              class="break-all text-base font-bold text-blue-700 underline hover:no-underline focus:outline-none focus-visible:no-underline"
               href="${data.shortUrl}"
               target="_blank"
             >
@@ -53,14 +55,26 @@ function formSubmitHandler() {
             <button
               id="copy-button"
               data-copy-url="${data.shortUrl}"
-              class="rounded text-white text-lg hover:bg-white hover:bg-opacity-25 ease-out p-1 transition duration-150 hover:backdrop-blur-sm"
+              class="rounded text-white text-lg hover:bg-white hover:bg-opacity-25 ease-out p-1 transition duration-150 hover:backdrop-blur-sm focus:outline-none focus-visible:backdrop-blur-sm focus-visible:bg-white focus-visible:bg-opacity-25"
             >
               <svg class="h-6 w-6">
-                <use id="copy-icon" href="${svg}#clipboardIcon"></use>
+                <use id="copy-icon" href="${copySvg}#clipboardIcon"></use>
               </svg>
             </button>
           </div>
         </div>`
+
+        if (urlElement) {
+          urlElement.value = ''
+        }
+
+        let copyButton = document.getElementById(
+          'copy-button',
+        ) as HTMLButtonElement | null
+
+        if (copyButton) {
+          copyButton.focus()
+        }
       })
       .catch(_ => {
         if (!result || !urlFieldset) {
@@ -78,11 +92,35 @@ function formSubmitHandler() {
 
 function preloadCopySvg() {
   let preload = document.createElement('link')
-  preload.href = svg
+  preload.href = copySvg
   preload.rel = 'preload'
   preload.as = 'image'
   preload.type = 'image/svg+xml'
   document.head.append(preload)
+}
+
+function setGitHubIcon() {
+  let githubIcon = document.getElementById(
+    'github-icon',
+  ) as SVGUseElement | null
+
+  if (!githubIcon) {
+    return
+  }
+
+  githubIcon.setAttribute('href', `${githubSvg}#github-icon`)
+}
+
+function setExternalLinkSvgIcon() {
+  let externalIcon = document.getElementById(
+    'external-icon',
+  ) as SVGUseElement | null
+
+  if (!externalIcon) {
+    return
+  }
+
+  externalIcon.setAttribute('href', `${externalLinkSvg}#external`)
 }
 
 function focusInput() {
@@ -110,9 +148,9 @@ function globalButtonClickHandler() {
           return
         }
         if (state.matches('copying')) {
-          useRef.setAttribute('href', `${svg}#clipboardSelectedIcon`)
+          useRef.setAttribute('href', `${copySvg}#clipboardSelectedIcon`)
         } else if (state.matches('idle')) {
-          useRef.setAttribute('href', `${svg}#clipboardIcon`)
+          useRef.setAttribute('href', `${copySvg}#clipboardIcon`)
         }
       })
 
@@ -123,6 +161,8 @@ function globalButtonClickHandler() {
 }
 
 preloadCopySvg()
+setGitHubIcon()
+setExternalLinkSvgIcon()
 focusInput()
 formSubmitHandler()
 globalButtonClickHandler()
