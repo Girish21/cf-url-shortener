@@ -9,10 +9,16 @@ import { clsx } from '~/utils'
 function ClipboardButton({ url }: { url: string }) {
   let machine = React.useMemo(() => copyMachine.withContext({ url }), [url])
   let [state, send] = useMachine(machine)
+  let buttonRef = React.useRef<HTMLButtonElement>(null)
+
+  React.useEffect(() => {
+    buttonRef.current?.focus()
+  }, [])
 
   return (
     <button
-      className='relative isolate z-10 flex-shrink-0 overflow-hidden rounded p-2 after:absolute after:inset-0 after:blur-lg after:saturate-150 after:transition after:duration-150 after:ease-out after:content-[""] hover:after:bg-gray-100 hover:after:bg-opacity-50'
+      ref={buttonRef}
+      className='ease-outfocus:outline-none relative isolate z-10 flex-shrink-0 overflow-hidden rounded p-2 transition duration-150 hover:bg-white hover:bg-opacity-30 hover:backdrop-blur-md focus:outline-none focus-visible:bg-white focus-visible:bg-opacity-30 focus-visible:backdrop-blur-md'
       title='Copy to Clipboard'
       onClick={() => {
         send('CLICK')
@@ -46,7 +52,7 @@ function ShortUrl({ url }: { url: string }) {
           href={url}
           target='_blank'
           rel='noreferrer'
-          className='font-bold text-indigo-700 underline hover:no-underline'
+          className='font-bold text-indigo-700 underline hover:no-underline focus:no-underline focus:outline-none'
         >
           {url}
         </a>
