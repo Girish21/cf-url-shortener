@@ -15,6 +15,7 @@ import styles from '~/styles/app.css'
 import Alert from './components/alert'
 import Container from './components/container'
 import Form from './components/form'
+import Footer from './components/footer'
 import Text from './components/text'
 import generateUrl from './generateUrl'
 
@@ -78,6 +79,7 @@ export default function App() {
           <Text />
           <Form />
           <Alert />
+          <Footer />
         </Container>
         <ScrollRestoration />
         <Scripts />
