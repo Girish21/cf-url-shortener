@@ -17,3 +17,9 @@
   font-style: normal;
   font-display: swap;
 }
+
+@layer utilities {
+  .app-width {
+    width: min(60ch, 100vw - 2rem);
+  }
+}
