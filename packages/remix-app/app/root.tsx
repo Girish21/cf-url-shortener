@@ -69,12 +69,12 @@ export let action: ActionFunction = async ({ context, request }) => {
 
 export default function App() {
   return (
-    <html lang='en' className='bg-yellow-100 dark:bg-slate-900'>
+    <html lang='en' className='h-full bg-yellow-100 dark:bg-slate-900'>
       <head>
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className='h-full'>
         <Container>
           <Text />
           <Form />

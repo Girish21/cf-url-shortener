@@ -16,7 +16,7 @@ function Form() {
   }, [transition.state])
 
   return (
-    <div className='mt-[10vh]'>
+    <section>
       <RemixForm method='post'>
         <fieldset className='mx-auto flex flex-col gap-4 sm:flex-row'>
           <label htmlFor='url' className='sr-only'>
@@ -35,7 +35,7 @@ function Form() {
           </button>
         </fieldset>
       </RemixForm>
-    </div>
+    </section>
   )
 }
 

@@ -28,7 +28,7 @@ function ExternalLink({
 
 function Footer() {
   return (
-    <footer className='app-width fixed bottom-0 left-0 right-0 mx-auto'>
+    <footer className='mt-auto'>
       <div className='flex flex-col-reverse items-center justify-evenly gap-4 py-4 sm:flex-row sm:gap-0 md:justify-start'>
         <ExternalLink
           className='hidden md:flex'

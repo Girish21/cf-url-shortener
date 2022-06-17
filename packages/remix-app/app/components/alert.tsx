@@ -72,7 +72,7 @@ function Alert() {
   return (
     <div
       className={clsx(
-        'mx-auto mt-[10vh] rounded border-2 border-gray-900 p-6 text-lg shadow-[4px_4px] shadow-gray-900 dark:border-none dark:ring-2 dark:ring-offset-2 dark:ring-offset-transparent sm:text-xl',
+        'mx-auto rounded border-2 border-gray-900 p-6 text-lg shadow-[4px_4px] shadow-gray-900 dark:border-none dark:ring-2 dark:ring-offset-2 dark:ring-offset-transparent sm:text-xl',
         'error' in actionData &&
           'bg-pink-600 dark:bg-red-400 dark:ring-red-700',
         'shortUrl' in actionData &&
