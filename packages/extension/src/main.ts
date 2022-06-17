@@ -43,7 +43,7 @@ function formSubmitHandler() {
         }
         urlFieldset.disabled = false
 
-        result.innerHTML = `<div class="mt-4 p-2 border-2 border-gray-900 shadow-[4px_4px] shadow-gray-900 bg-green-500">
+        result.innerHTML = `<div class="mt-4 p-2 border-2 border-gray-900 shadow-[4px_4px] shadow-gray-900 bg-green-400 rounded">
           <div class="flex items-center gap-3">
             <a
               class="break-all text-base font-bold text-blue-700 underline hover:no-underline focus:outline-none focus-visible:no-underline"
@@ -55,7 +55,7 @@ function formSubmitHandler() {
             <button
               id="copy-button"
               data-copy-url="${data.shortUrl}"
-              class="rounded text-white text-lg hover:bg-white hover:bg-opacity-25 ease-out p-1 transition duration-150 hover:backdrop-blur-sm focus:outline-none focus-visible:backdrop-blur-sm focus-visible:bg-white focus-visible:bg-opacity-25"
+              class="rounded text-lg hover:bg-white hover:bg-opacity-25 ease-out p-1 transition duration-150 hover:backdrop-blur-sm focus:outline-none focus-visible:backdrop-blur-sm focus-visible:bg-white focus-visible:bg-opacity-25"
             >
               <svg class="h-6 w-6">
                 <use id="copy-icon" href="${copySvg}#clipboardIcon"></use>
