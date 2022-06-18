@@ -28,7 +28,11 @@ async function generateUrl({
     )
   }
 
-  let slug = await (await fetch('https://uuid.rocks/nanoid')).text()
+  let nanoidUrl = new URL('https://uuid.rocks/nanoid')
+  nanoidUrl.searchParams.set('len', '10')
+
+  let nanoidRequest = new Request(nanoidUrl)
+  let slug = await (await fetch(nanoidRequest)).text()
 
   if (!slug) {
     return json<ActionData>(
