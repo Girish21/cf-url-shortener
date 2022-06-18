@@ -14,8 +14,9 @@ import svg from 'internal-assets/copy.svg'
 import styles from '~/styles/app.css'
 import Alert from './components/alert'
 import Container from './components/container'
-import Form from './components/form'
 import Footer from './components/footer'
+import Form from './components/form'
+import QRCode from './components/qr'
 import Text from './components/text'
 import generateUrl from './generateUrl'
 
@@ -78,6 +79,7 @@ export default function App() {
         <Container>
           <Text />
           <Form />
+          <QRCode />
           <Alert />
           <Footer />
         </Container>
