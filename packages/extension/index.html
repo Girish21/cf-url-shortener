@@ -15,10 +15,10 @@
     <title>Tiny URL Generator</title>
   </head>
   <body class="border-4 border-gray-900 bg-yellow-100">
-    <main class="p-6">
+    <main class="flex flex-col gap-4 p-6">
       <h1 class="text-center text-2xl font-bold">Generate Short URL</h1>
       <form method="post" id="url-form">
-        <fieldset id="url-fieldset" class="mt-4 flex w-[min(45ch,90vw)] gap-4">
+        <fieldset id="url-fieldset" class="flex w-[min(45ch,90vw)] gap-4">
           <input
             required
             id="url"
@@ -33,8 +33,8 @@
           </button>
         </fieldset>
       </form>
-      <div id="result"></div>
-      <footer class="mt-6 flex w-[min(45ch,90vw)] items-center justify-between">
+      <div id="result" class="flex flex-col gap-4"></div>
+      <footer class="flex w-[min(45ch,90vw)] items-center justify-between">
         <a
           rel="noreferrer"
           target="_blank"

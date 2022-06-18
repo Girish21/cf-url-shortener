@@ -3,6 +3,7 @@ import externalLinkSvg from 'internal-assets/external-link.svg?url'
 import githubSvg from 'internal-assets/github.svg?url'
 import { copyMachine } from 'machines'
 import { interpret } from 'xstate'
+import { toCanvas } from 'qrcode'
 import './style.css'
 
 let form = document.getElementById('url-form') as HTMLFormElement | null
@@ -43,7 +44,10 @@ function formSubmitHandler() {
         }
         urlFieldset.disabled = false
 
-        result.innerHTML = `<div class="mt-4 p-2 border-2 border-gray-900 shadow-[4px_4px] shadow-gray-900 bg-green-400 rounded">
+        result.innerHTML = `<div class="w-max mx-auto border-2 border-gray-900 shadow-[4px_4px]">
+          <canvas aria-hidden="true" id="qr-canvas"></canvas>
+        </div>
+        <div class="p-2 border-2 border-gray-900 shadow-[4px_4px] shadow-gray-900 bg-green-400 rounded">
           <div class="flex items-center gap-3">
             <a
               class="break-all text-base font-bold text-blue-700 underline hover:no-underline focus:outline-none focus-visible:no-underline"
@@ -71,6 +75,17 @@ function formSubmitHandler() {
         let copyButton = document.getElementById(
           'copy-button',
         ) as HTMLButtonElement | null
+
+        let qrCanvas = document.getElementById(
+          'qr-canvas',
+        ) as HTMLCanvasElement | null
+
+        if (qrCanvas) {
+          toCanvas(qrCanvas, data.shortUrl, {
+            margin: 1,
+            scale: 3,
+          })
+        }
 
         if (copyButton) {
           copyButton.focus()
