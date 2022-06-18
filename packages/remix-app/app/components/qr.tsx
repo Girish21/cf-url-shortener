@@ -23,7 +23,7 @@ function QRCode() {
   }
 
   return (
-    <div className='mx-auto w-max overflow-hidden rounded border-2 border-gray-900 shadow-[4px_4px] dark:border-none dark:shadow-none'>
+    <div className='mx-auto w-max flex-shrink-0 overflow-hidden rounded border-2 border-gray-900 shadow-[4px_4px] dark:border-none dark:shadow-none'>
       <canvas aria-hidden ref={canvasRef} />
     </div>
   )
