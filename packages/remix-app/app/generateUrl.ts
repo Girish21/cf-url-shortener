@@ -31,7 +31,7 @@ async function generateUrl({
   let nanoidUrl = new URL('https://uuid.rocks/nanoid')
   nanoidUrl.searchParams.set('len', '10')
 
-  let nanoidRequest = new Request(nanoidUrl)
+  let nanoidRequest = new Request(nanoidUrl.href)
   let slug = await (await fetch(nanoidRequest)).text()
 
   if (!slug) {
