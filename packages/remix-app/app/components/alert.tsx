@@ -24,6 +24,7 @@ function ClipboardButton({ url }: { url: string }) {
         send('CLICK')
       }}
     >
+      <span className='sr-only'>Copy to Clipboard</span>
       <svg className='h-6 w-6'>
         {state.matches('idle') ? (
           <use href={`${svg}#clipboardIcon`} />
@@ -47,7 +48,7 @@ function ShortUrl({ url }: { url: string }) {
   return (
     <div className='flex items-center justify-between gap-3 sm:gap-6'>
       <p className='flex-1 break-all font-bold dark:font-normal'>
-        Shortened URL:{' '}
+        URL:{' '}
         <a
           href={url}
           target='_blank'
